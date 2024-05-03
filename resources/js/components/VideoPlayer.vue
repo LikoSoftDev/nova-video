@@ -57,6 +57,18 @@ const props = defineProps({
         type: String,
         default: 'auto'
     },
+    heightOnDetail: {
+        type: String,
+        default: 'auto'
+    },
+    minWidthOnDetail: {
+      type: String,
+      default: '300px'
+    },
+    widthOnDetail: {
+        type: String,
+        default: '100%'
+    },
     isDetails: {
         type: Boolean,
         required: true
@@ -73,8 +85,8 @@ const title = computed(() => {
 <style lang="scss" scoped>
 .video {
     position: relative;
-    width: 100%;
-    min-width: 300px;
+    width: v-bind(widthOnDetail);
+    min-width: v-bind(minWidthOnDetail);
     display: inline-block;
 
     &.small {

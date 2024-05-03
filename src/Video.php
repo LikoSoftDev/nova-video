@@ -28,6 +28,8 @@ class Video extends File
     protected NovaVideoPlayerDirection $dir        = NovaVideoPlayerDirection::LTR;
     protected NovaVideoPlayerType      $playerType = NovaVideoPlayerType::VIDSTACK;
     protected string                   $maxHeight  = 'auto';
+    protected string                   $heightOnDetail  = '100%';
+    protected string                   $widthOnDetail  = '100%';
 
 
     public function __construct($label, $fieldName = null, $disk = 'public', $storageCallback = null)
@@ -109,6 +111,26 @@ class Video extends File
         });
 
         $this->prunable();
+    }
+
+    public function getWidthOnDetail(): string
+    {
+        return $this->widthOnDetail;
+    }
+
+    public function setWidthOnDetail(string $widthOnDetail): void
+    {
+        $this->widthOnDetail = $widthOnDetail;
+    }
+
+    public function getHeightOnDetail(): string
+    {
+        return $this->heightOnDetail;
+    }
+
+    public function setHeightOnDetail(string $heightOnDetail): void
+    {
+        $this->heightOnDetail = $heightOnDetail;
     }
 
     protected function fillAttribute(NovaRequest $request, $requestAttribute, $model, $attribute)
@@ -212,6 +234,8 @@ class Video extends File
             'dir'                  => $this->dir->name,
             'playerType'           => $this->playerType->name,
             'maxHeight'            => $this->maxHeight,
+            'heightOnDetail'       => $this->heightOnDetail,
+            'widthOnDetail'       => $this->widthOnDetail,
             'displayCoverUploader' => $this->displayCoverUploader,
         ]);
     }
